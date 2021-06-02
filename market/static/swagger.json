@@ -1,0 +1,274 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "description": "Rostyslav Pelenskiy \U0001F917",
+    "version": "1.0.0",
+    "title": "Flask Swagger UI",
+    "contact": {
+      "email": "pelenskiy.r@gmail.com"
+    },
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+
+  },
+  "servers": [
+    {
+      "url": "/"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Item Request",
+      "description": "API for requesting and return items requests"
+    },
+    {
+      "name": "User Request",
+      "description": "API for requesting and return users requests"
+    }
+  ],
+  "paths": {
+    "/items": {
+      "get": {
+        "tags": [
+          "Item Request"
+        ],
+        "summary": "Get all items",
+
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/components/schemas/item"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Item Request"
+        ],
+        "summary": "Create a new item",
+        "requestBody": {
+          "description": "Item Request Post Object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/items"
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/components/schemas/id"
+            }
+          },
+          "400": {
+            "description": "Failed. Wrong data."
+          }
+        }
+      }
+    },
+    "/items/{id}": {
+      "get": {
+        "tags": [
+          "Item Request"
+        ],
+        "summary": "Get item with given ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "description": "Item Request id",
+            "schema": {
+              "$ref": "#/components/schemas/id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/components/schemas/item"
+            }
+          },
+          "400": {
+            "description": "Failed. Wrong data."
+          },
+          "404": {
+            "description": "Failed. Item was not found."
+          }
+        }
+      },
+      "put": {
+        "summary": "edit a film request by id",
+        "tags": [
+          "Item Request"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "description": "Item Request id",
+            "schema": {
+              "$ref": "#/components/schemas/id"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Item Request Object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/item"
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/components/schemas/item"
+            }
+          },
+          "400": {
+            "description": "Failed. Wrong data."
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete Item Request by ID",
+        "tags": [
+          "Item Request"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "description": "Item Request id",
+            "schema": {
+              "$ref": "#/components/schemas/id"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/components/schemas/id"
+            }
+          },
+          "400": {
+            "description": "Failed. Misunderstood Request."
+          },
+          "404": {
+            "description": "Failed. Item was not found."
+          }
+        }
+      }
+    },
+    "/users": {
+      "get": {
+        "tags": [
+          "User Request"
+        ],
+        "summary": "Get all users",
+
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/components/schemas/id"
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "components": {
+    "schemas": {
+      "id": {
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        }
+      },
+      "items": {
+        "type": "object",
+        "properties": {
+
+          "name": {
+            "type": "string",
+            "format": "string"
+          },
+          "price": {
+            "type": "number"
+          },
+          "barcode": {
+            "type": "string",
+            "format": "string"
+          },
+          "description": {
+            "type": "string",
+            "format": "string"
+          },
+          "owner": {
+            "type": "number"
+          }
+        }
+      },
+      "item": {
+        "type": "object",
+        "properties": {
+           "name": {
+            "type": "string",
+            "format": "string"
+          },
+          "price": {
+            "type": "number"
+          },
+          "barcode": {
+            "type": "string",
+            "format": "string"
+          },
+          "description": {
+            "type": "string",
+            "format": "string"
+          },
+          "owner": {
+            "type": "number"
+          }
+        }
+      },
+      "itemsResponse": {
+        "type": "object",
+        "properties": {
+          "itemRequest": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/item"
+            }
+          }
+        }
+      }
+    }
+  }
+}

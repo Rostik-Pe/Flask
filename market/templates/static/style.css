@@ -1,0 +1,71 @@
+            body{
+
+            margin: auto;
+            }
+           .container{
+                position:relative;
+                background:rgb(230,230,230);
+                display:inline-block;
+                margin:auto;
+                box-shadow:5px 5px 5px grey
+                    , -5px -5px 5px white;
+                border-radius:20px;
+           }
+           #logo{
+                width:100px;
+                height:px;
+                background:url(logo.png);
+                background-size:100%;
+                border-radius:50%;
+                box-shadow:5px 5px 4px grey
+                    , -5px -5px 4px white;
+                margin-top:16px;
+           }
+           h3{
+                color:rgb(80,80,80);
+           }
+           #user ,#lock{
+                width:300px;
+                height:50px;
+                margin:14px;
+                box-shadow:inset 5px 5px 3px
+                    grey, inset -5px -5px 3px white;
+                border-radius:40px;
+           }
+           input{
+                width: 260px;
+                height:50px;
+                background: none;
+                border:none;
+                outline:none;
+                font-size:18px;
+           }
+           button{
+                width:300px;
+                height:50px;
+                border-radius:40px;
+                font-size:20px;
+                color:white;
+                background:rgb(0,256,200);
+                border:none;
+                outline:none;
+                box-shadow:5px 5px 4px grey
+                    , -5px -5px 4px white;
+           }
+           button:hover{
+                box-shadow:1px 1px 5px grey
+                    , -1px -1px 5px white;
+                    color:grey;
+           }
+           #foot{
+                font-size:18px;
+                margin-top:24px;
+                color:rgb(60,60,60);
+           }
+           a{
+                text-decoration:none;
+                color:grey;
+           }
+           i{
+                color:rgb(70,70,70);
+           }
